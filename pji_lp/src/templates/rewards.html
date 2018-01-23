@@ -2,11 +2,18 @@
 <div class="rewards__header" data-bind="text: texts() && texts().rewards.title"></div>
 <div class="owl-carousel owl-theme" data-bind="foreach: gifts">
     <div class="gift" data-bind="attr: { 'data-id': $index }">
-        <img class="gift__image" data-bind="attr: { src: thumbs.url_250x250 }" alt="">
+        <div class="gift__gradient"><img class="gift__image" data-bind="attr: { src: thumbs.url_250x250 }" alt=""></div>
         <div class="gift__name" data-bind="text: name"></div>
+        <!-- ko if: points <= $parent.user().user_points.confirmed -->
+        <a href="javascript:void(0)" class="gift__redeem gift__redeem-available " data-bind="css: { '__sailplay-disabled': ($parent.readonly() || !$parent.user() && $parent.no_auth_widget()) } "><span data-bind="text: $parent.texts() && $parent.texts().rewards.redeem_for"></span>
+            <span data-bind="text: points"></span>
+            <span class="uppercase" data-bind="text: $parent.texts() && $parent.texts().points"></span></a>
+        <!-- /ko -->
+        <!-- ko if: points > $parent.user().user_points.confirmed -->
         <a href="javascript:void(0)" class="gift__redeem" data-bind="css: { '__sailplay-disabled': ($parent.readonly() || !$parent.user() && $parent.no_auth_widget()) } "><span data-bind="text: $parent.texts() && $parent.texts().rewards.redeem_for"></span>
             <span data-bind="text: points"></span>
             <span class="uppercase" data-bind="text: $parent.texts() && $parent.texts().points"></span></a>
+        <!-- /ko -->
     </div>
 </div>
 <!-- ko if: start_redeem -->

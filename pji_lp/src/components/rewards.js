@@ -88,8 +88,8 @@ class rewardsView {
 
         jQuery(document).on('mousedown', '.__sailplay-gift__redeem', event => {
             let index = jQuery(event.currentTarget).parent().data('id');
-            jQuery('.__sailplay-gift__redeem-active').removeClass('__sailplay-gift__redeem-active');   
-            jQuery(event.currentTarget).addClass('__sailplay-gift__redeem-active')     
+            //jQuery('.__sailplay-gift__redeem-active').removeClass('__sailplay-gift__redeem-active');   
+            //jQuery(event.currentTarget).addClass('__sailplay-gift__redeem-active')     
             this.show_redeem_popup(index);
             event.stopPropagation();
             return false;
@@ -99,7 +99,7 @@ class rewardsView {
     close_redeem_popup() {
         this.start_redeem(false);
         this.active_gift();
-        jQuery('.__sailplay-gift__redeem-active').removeClass('__sailplay-gift__redeem-active');        
+        //jQuery('.__sailplay-gift__redeem-active').removeClass('__sailplay-gift__redeem-active');        
     }
 
     show_redeem_popup(index) {
@@ -114,7 +114,7 @@ class rewardsView {
             .then(data => {
                 console.log('data', data)
                 if(data && data.returnURL) {
-                    window.location.href += data.returnURL
+                    window.location.href = data.returnURL
                 }
             })
     }

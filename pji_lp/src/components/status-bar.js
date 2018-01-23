@@ -17,7 +17,7 @@ class statusBarView {
         }, 'config.load')
 
         this.fill = ko.computed(() => {
-            return `${this.points() / 40 * 100}%`;
+            return `${this.points() / this.status_points()[this.status_points().length - 1] * 100}%`;
         })
 
         subscribe(config => {
