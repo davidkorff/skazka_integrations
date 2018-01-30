@@ -123,17 +123,19 @@ window.SAILPLAY = function (opts) {
                 for (let f of chunk) {
                     if ((f.type == 'birthday' || f.type == 'sign_up_date') && f.day() != 'Day' && f.month().id && f.year() != 'Year') {
                         data[f.type] = `${f.year()}-${("0" + f.month().id).slice(-2)}-${("0" + f.day()).slice(-2)}`
-                    } else {
-                        if (f.maskMaxLength && f.countryCode) {
-                            if (f.maskMaxLength >= f.value().split(/[\D]/).join('').length)
-                                data[f.type] = f.countryCode + f.value();
-                            else
-                                data[f.type] = f.value();
-                        } else data[f.type] = f.value();
+                    }
+                    else if (f.type == 'phone') {
+                        data[f.type] = getPhoneValue({
+                            value: f.value(),
+                            maskMaxLength: f.maskMaxLength,
+                            countryCode: f.countryCode,
+                        });
+                    }
+                    else {
+                        data[f.type] = f.value();
                     }
                 }
             })
-
             return data
         }
 
@@ -288,7 +290,7 @@ window.SAILPLAY = function (opts) {
                     tagsDeleteArray.push('SMS Opt-In')
                 }
 
-                if(tagsAddArray) 
+                if(tagsAddArray)
                     sp.addTags(tagsAddArray, {
                         auth_hash: '',
                         email: self.email(),
@@ -299,7 +301,7 @@ window.SAILPLAY = function (opts) {
                         auth_hash: '',
                         email: self.email(),
                         phone: ''
-                    }) 
+                    })
             }
 
             function nextStep() {
@@ -329,7 +331,7 @@ window.SAILPLAY = function (opts) {
                 if (this.last_step()) {
                     let tags = ['Marketing Opt-In'].concat(updateTagsArray(['mainFields', 'secondaryFields']))
                     data = $.extend(true, {}, this.previous_data, data)
-                    
+
                     sp.addTags(tags, {
                         auth_hash: '',
                         email: this.email(),
@@ -440,6 +442,13 @@ window.SAILPLAY = function (opts) {
         }
     };
 
+    let getPhoneValue = function ( { value, maskMaxLength, countryCode} ) {
+        let phoneValue = value;
+        if (maskMaxLength && countryCode && maskMaxLength >= value.split(/[\D]/).join('').length)
+                phoneValue = countryCode + value;
+        return phoneValue;
+    }
+
     let origValueUpdate = ko.bindingHandlers.value.update;
     ko.bindingHandlers.value.update = function (element, valueAccessor) {
         let val = valueAccessor(),
@@ -453,7 +462,7 @@ window.SAILPLAY = function (opts) {
                 newValue = newValue.split(/[\D]/).join('');
 
             let set_mask = (newValue && newValue.length > val.maxLen) ? 'ddddddddddd' : mask
-            
+
             let options = {
                 onChange: function(content) {
                     let set_mask = (content.split(/[\D]/).join('').length > val.maxLen) ? 'ddddddddddd' : mask
@@ -509,7 +518,7 @@ window.SAILPLAY = function (opts) {
         pji_subform.year_input_size(sp.specificConfig.settings.year_input_size)
 
         pji_subform.day_text = sp.specificConfig.settings.texts.date.day
-        pji_subform.month_text = sp.specificConfig.settings.texts.date.month        
+        pji_subform.month_text = sp.specificConfig.settings.texts.date.month
         pji_subform.year_text = sp.specificConfig.settings.texts.date.year
 
         var genders = {}
@@ -548,7 +557,7 @@ window.SAILPLAY = function (opts) {
 
                 if (field.autocomplete) {
                     el.autocomplete = field.autocomplete
-                    el.autocomplete_visible = 
+                    el.autocomplete_visible =
                         field.autocomplete_visible === undefined ? true : field.autocomplete_visible
                     if (field.autocomplete_required) {
                         el.value.extend({
@@ -619,7 +628,17 @@ window.SAILPLAY = function (opts) {
                         mask: (field.phone && field.phone.mask) || '+56 (999) 99-99-99',
                         pattern: (field.phone && field.phone.pattern) || "^(\\+56) \\(([0-9]{3})\\) ([0-9]{2})-([0-9]{2})-([0-9]{2})$"
                     })
+
+                    if (!field.can_be_not_unique) el.value.extend({
+                      isPhoneUnique: {
+                        maskMaxLength: el.maskMaxLength,
+                        countryCode: el.countryCode,
+                        in_progress: pji_subform.in_progress
+                      }
+                    })
                 }
+
+
 
                 tempArr.push(el)
 
@@ -669,6 +688,27 @@ window.SAILPLAY = function (opts) {
                         return autocompleteArray.some((entry) => val && (entry.toLowerCase() == val.toLowerCase()))
                     },
                     message: texts.form_errors && texts.form_errors.autocomplete_required || "Incorrect value"
+                };
+                ko.validation.rules['isPhoneUnique'] = {
+                  async: true,
+                  validator: function(val, params, callback){
+                      params.in_progress && params.in_progress(true);
+                      let isValid = true;
+                      let phoneExists = sp.updateCustomVars({
+                          phone: getPhoneValue   ({
+                            value: val,
+                            maskMaxLength: params.maskMaxLength,
+                            countryCode: params.countryCode
+                          })
+                      })
+                      phoneExists.then(data => {
+                        if(data.message != "User not found")
+                          isValid = false;
+                        params.in_progress && params.in_progress(false);
+                        callback(isValid);
+                      })
+                  },
+                  message: texts.form_errors && texts.form_errors.phone_not_unique || "Phone is not unique"
                 };
                 ko.validation.registerExtenders();
 
