@@ -1,0 +1,10 @@
+{
+  "status": "ok",
+  "orders_list": [
+    {
+      "order_num": "test-2017-09-27-02",
+      "state": "Отменён",
+      "link": "https://github.com/"
+    }
+  ]
+}
