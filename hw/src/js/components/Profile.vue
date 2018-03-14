@@ -859,7 +859,7 @@ export default {
   align-content: center;
 
   @media screen and (min-width: 780px) {
-    align-content: start;
+    align-content: flex-start;
   }
 
   &:after {

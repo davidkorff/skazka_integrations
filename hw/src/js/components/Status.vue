@@ -41,7 +41,6 @@
     },
     data: function () {
       return {
-
       }
     },
     methods: {
