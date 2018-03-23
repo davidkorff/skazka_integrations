@@ -100,6 +100,7 @@
         position relative
         box-sizing border-box
         padding 35px 25px 25px
+        width 100%
         @media screen and (min-width: 780px)
             padding 40px 25px 25px
         @media screen and (min-width: 1050px)

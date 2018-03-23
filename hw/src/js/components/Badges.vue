@@ -10,7 +10,7 @@
             </slick>
 
             <div class="sp-badges-empty" v-if="!isReceived($parent.badges.multilevel_badges[1]).length">
-                <img src="~/img/icon-badges-empty.svg">
+                <div><img src="~/img/icon-badges-empty.svg"></div>
                 <span>У вас пока нет бейджей</span>
             </div>
             <div class="sp-badges-info">Открыто <strong>{{ isReceived($parent.badges.multilevel_badges[1]).length || 0 }}</strong> бейджей из <strong>{{ $parent.badges.multilevel_badges[1].length || 0 }}</strong></div>

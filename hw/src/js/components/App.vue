@@ -243,6 +243,7 @@
             left 0
             right 0
             margin auto
+            white-space nowrap
             @media screen and (min-width: 780px)
                 top -23px
             a
@@ -293,6 +294,7 @@
             padding-right 17px
             position relative
             display inline-block
+            white-space nowrap
             &:hover
                 text-decoration none
             @media screen and (min-width: 780px)
@@ -400,6 +402,7 @@
         position relative
         @media screen and (min-width: 780px)
             display flex
+            display -ms-flexbox
             align-items stretch
             justify-content space-evenly
         @media screen and (min-width: 1050px)
