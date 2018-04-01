@@ -1014,11 +1014,9 @@ export default {
 }
 
 
-
 .sp-user-socials {
   box-sizing: border-box;
   margin: 15px 0;
-  display: flex;
   justify-content: start;
     padding-left: 0;
 
@@ -1027,7 +1025,7 @@ export default {
     width: 36px;
     height: 36px;
     margin-right: 10px;
-
+    float:left;
     &:last-child {
       margin-right: 0;
     }

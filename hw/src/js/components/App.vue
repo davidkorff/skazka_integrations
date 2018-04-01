@@ -423,8 +423,11 @@
                 top -17px
                 left 20px
                 border-radius 15px
+        &__badges
+            float right
+            margin-bottom 20px
         &__badges, &__quests, &__wishlist, &__recommended, &__game, &__gifts, &__status
-            margin-top 35px
+            margin-top 15px
             @media screen and (min-width: 780px)
                 margin-top 50px
         &__gifts, &__status
@@ -433,18 +436,24 @@
             border-radius 0
         &__profile
             justify-content space-between
+            float left
+            margin-bottom 20px
             @media screen and (min-width: 1050px)
                 width 65%
         &__quests
+            float left
             @media screen and (min-width: 1050px)
                 width 65%
         &__recommended
+            float left
             @media screen and (min-width: 1050px)
                 width 65%
         &__wishlist
+            float right
             @media screen and (min-width: 1050px)
                 width 33%
         &__game
+            float right
             @media screen and (min-width: 1050px)
                 width 33%
         &__badges

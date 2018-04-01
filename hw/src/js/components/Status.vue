@@ -136,6 +136,8 @@
             align-items center
             z-index 3
             text-align left
+            img
+                text-align center
             @media screen and (min-width: 780px)
                 flex-direction column
             &:nth-child(1)
