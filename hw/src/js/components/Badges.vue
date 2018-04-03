@@ -154,6 +154,7 @@
 
 </script>
 
+
 <style scoped lang="stylus">
 
     #sp-loyalty-badges
@@ -229,10 +230,14 @@
             padding 35px 25px 25px
         .sp-popup-buttons-wrapper
             text-align center
+            float left
+            width 100%
         .sp-popup-badge-info
             margin-top 20px
             padding 20px 0
             text-align center
+            float left
+            width 100%
             border-top 1px solid rgba(224, 224, 224, 0.7)
             &-name
                 font-weight 900
@@ -257,6 +262,8 @@
         .sp-popup-badges-list
             text-align center
             margin-top 20px
+            float left
+            width 100%
             img
                 display inline-block
                 width auto

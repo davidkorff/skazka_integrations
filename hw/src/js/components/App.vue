@@ -208,6 +208,44 @@
             height 100%
 
 </style>
+<style lang="css">
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        .sp-popup {
+            text-align: center;
+        }
+        #sp-loyalty .sp-popup-content {
+            text-align: left;
+            float: none !important;
+            display: inline-block;
+        }
+        #sp-loyalty .sp-popup-content .sp-container {
+            display: inline-block!important;
+        }
+        .sp-gift-item {
+            height:450px;
+        }
+        .sp-game-container {
+            text-align: center;
+            width: 100%;
+            display: inline-block;
+        }
+        .sp-status-item {
+            text-align: center;
+        }
+        .sp-form-checkbox {
+            float: left;
+            display: inline-block;
+        }
+        .sp-game-container img, .sp-recommended-list-item img {
+            border: 0;
+        }
+        .sp-recommended-list-item {
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+        }
+    }
+</style>
 
 /* local styles */
 <style scoped lang="stylus">
@@ -514,6 +552,8 @@
                 font-weight 900
                 margin-bottom 15px
                 text-transform uppercase
+                float left
+                width 100%
                 @media screen and (min-width: 780px)
                     font-size 18px
                     line-height 21px
