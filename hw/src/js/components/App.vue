@@ -225,7 +225,7 @@
         .sp-game-container {
             position: relative;
         }
-        .sp-game-container img {
+        .sp-game-container .sp-game-info + img {
             position: absolute;
             left: 50%;
             top: 0;
@@ -234,6 +234,23 @@
         .sp-user-email {
             display: inline-block;
             width: 100%;
+        }
+        #sp-loyalty-badges {
+            height: 243px;
+        }
+        #sp-loyalty-recommended {
+            height:385px;
+        }
+        .sp-recommended-list-item {
+            text-align: center;
+            padding-top:170px;
+            position: relative;
+        }
+        .sp-recommended-list-item > img {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translate3d(-50%,0,0);
         }
         .sp-recommended-list .sp-recommended-list-item .sp-recommended-list-item-price span {
             display: inline-block;
