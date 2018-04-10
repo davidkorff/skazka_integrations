@@ -236,7 +236,13 @@
             width: 100%;
         }
         #sp-loyalty-badges {
-            height: 243px;
+            height: 257px;
+        }
+        .sp-container__profile {
+            height: 260px;
+        }
+        #sp-loyalty-badges .sp-link {
+            /*bottom: -13px;*/
         }
         #sp-loyalty-recommended {
             height:385px;
