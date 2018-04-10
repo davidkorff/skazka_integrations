@@ -210,6 +210,54 @@
 </style>
 <style lang="css">
     @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        .sp-popup-profile-form {
+            width: 100%;
+        }
+        .sp-wishlist-container {
+            text-align: center;
+        }
+        #sp-loyalty-wishlist {
+            width: 100%;
+        }
+        .sp-wishlist-empty {
+            display: inline-block;
+        }
+        .sp-game-container {
+            position: relative;
+        }
+        .sp-game-container img {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translate3d(-50%,0,0);
+        }
+        .sp-user-email {
+            display: inline-block;
+            width: 100%;
+        }
+        .sp-recommended-list .sp-recommended-list-item .sp-recommended-list-item-price span {
+            display: inline-block;
+        }
+        .sp-game-price span {
+            display: inline-block;
+        }
+        .sp-container__wishlist {
+            height: 367px;
+        }
+        .sp-quests-item-info {
+            float: left;
+        }
+        .sp-quests-item-image {
+            float: right;
+        }
+
+
+        .sp-game-container .sp-game-info {
+            margin-top:180px !important;
+        }
+        .sp-popup-gift-success .sp-container {
+            text-align: center;
+        }
         .sp-popup {
             text-align: center;
         }
