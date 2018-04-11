@@ -25,7 +25,7 @@ window.SAILPLAY = function (opts) {
         // auth_hash: auth_hash,
         domain: opts.domain || 'http://sailplay.ru',
         language: opts.language || 'en',
-        partner_id: opts.partner || 1788
+        partner_id: opts.partner || 1491
     })
 
     class PJI_Subform {
@@ -125,8 +125,9 @@ window.SAILPLAY = function (opts) {
                         data[f.type] = `${f.year()}-${("0" + f.month().id).slice(-2)}-${("0" + f.day()).slice(-2)}`
                     }
                     else if (f.type == 'phone') {
+                        let value = f.value();
                         data[f.type] = getPhoneValue({
-                            value: f.value(),
+                            value: value ? value.slice(f.slice || 0) : '',
                             maskMaxLength: f.maskMaxLength,
                             countryCode: f.countryCode,
                         });
@@ -165,7 +166,9 @@ window.SAILPLAY = function (opts) {
                 return
             }
 
-            let data = this.getData(field_set)
+            let data = this.getData(field_set);
+            let _fields = this[field_set]();
+
             if (!this.email())
                 this.email(data.email)
 
@@ -197,9 +200,12 @@ window.SAILPLAY = function (opts) {
                             case 'birthday':
                                 if (data[key]) data_vars["__form_edit_['birthDate']"] = data[key];
                                 break
+                            default:
+                                let isVariable = ko.utils.arrayFirst(_fields, chunk => ko.utils.arrayFirst(chunk, item => item.isVariable));
+                                if (isVariable) data_vars[key] = data[key] || '';
+                                break;
                         }
                     }
-
                     sp.updateCustomVars({
                         email: self.email(),
                         ...data_vars
@@ -552,7 +558,8 @@ window.SAILPLAY = function (opts) {
                 let el = {
                     name: field.name,
                     value: ko.observable(),
-                    type: field.type
+                    type: field.type,
+                    isVariable: !!field.variable
                 }
 
                 if (field.autocomplete) {
@@ -622,6 +629,7 @@ window.SAILPLAY = function (opts) {
                 if (field.type == 'phone') {
                     el.maskMaxLength = field.phone && field.phone.maskMaxLength;
                     el.countryCode = field.phone && field.phone.countryCode;
+                    el.slice = field.phone && field.phone.slice;
 
                     el.value.extend({
                         maskMaxLength: el.maskMaxLength,
@@ -674,7 +682,7 @@ window.SAILPLAY = function (opts) {
 
 
     sp.config.subscribe(config => {
-        sp.getConfigByName(opts.config || 'pjsubform')
+        sp.getConfigByName(opts.config || 'subform')
             .then(data => {
 
                 sp.specificConfig = data.config.config;
