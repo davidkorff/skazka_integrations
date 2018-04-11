@@ -136,6 +136,8 @@
             align-items center
             z-index 3
             text-align left
+            img
+                text-align center
             @media screen and (min-width: 780px)
                 flex-direction column
             &:nth-child(1)
@@ -163,7 +165,7 @@
                     max-height 90%
                     @media screen and (min-width: 780px)
                         max-width 90%
-                        max-height none
+                        max-height 136px
             &:nth-child(2)
                 top 53.1%
                 left 20.4%
@@ -190,7 +192,7 @@
                     max-height 90%
                     @media screen and (min-width: 780px)
                         max-width: 90%
-                        max-height: none
+                        max-height: 136px
             &:nth-child(3)
                 top 82.6%
                 left 20.4%
@@ -218,7 +220,7 @@
                     max-height 90%
                     @media screen and (min-width: 780px)
                         max-width: 90%
-                        max-height: none
+                        max-height: 136px
             img
                 display inline-block
             .sp-status-offset

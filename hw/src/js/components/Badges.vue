@@ -10,8 +10,8 @@
             </slick>
 
             <div class="sp-badges-empty" v-if="!isReceived($parent.badges.multilevel_badges[1]).length">
-                <img src="~/img/icon-badges-empty.svg">
-                <span>У вас пока нет бейджей</span>
+                <div style="float: left"><img src="~/img/icon-badges-empty.svg"></div>
+                <span style="max-width: 115px">У вас пока нет бейджей</span>
             </div>
             <div class="sp-badges-info">Открыто <strong>{{ isReceived($parent.badges.multilevel_badges[1]).length || 0 }}</strong> бейджей из <strong>{{ $parent.badges.multilevel_badges[1].length || 0 }}</strong></div>
         </div>
@@ -154,6 +154,7 @@
 
 </script>
 
+
 <style scoped lang="stylus">
 
     #sp-loyalty-badges
@@ -229,10 +230,14 @@
             padding 35px 25px 25px
         .sp-popup-buttons-wrapper
             text-align center
+            float left
+            width 100%
         .sp-popup-badge-info
             margin-top 20px
             padding 20px 0
             text-align center
+            float left
+            width 100%
             border-top 1px solid rgba(224, 224, 224, 0.7)
             &-name
                 font-weight 900
@@ -257,6 +262,8 @@
         .sp-popup-badges-list
             text-align center
             margin-top 20px
+            float left
+            width 100%
             img
                 display inline-block
                 width auto

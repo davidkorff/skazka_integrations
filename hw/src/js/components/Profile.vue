@@ -13,19 +13,19 @@
                 <div class="sp-user-name">{{ $parent.user.user.name || 'Имя не указано' }}</div>
                 <a :href="'tel:' + $parent.user.user.phone" class="sp-user-phone">{{ $parent.user.user.phone  | phone }}</a>
                 <a :href="'mailto:' + $parent.user.user.email" class="sp-user-email">{{ $parent.user.user.email }}</a>
-            </div>
-            <div class="sp-user-socials">
-                <div class="sp-user-socials-item">
-                    <img :src="getSocials.fb" alt="Facebook">
-                </div>
-                <div class="sp-user-socials-item">
-                    <img :src="getSocials.vk" alt="Vk">
-                </div>
-                <div class="sp-user-socials-item">
-                    <img :src="getSocials.gp" alt="Google plus">
-                </div>
-                <div class="sp-user-socials-item">
-                    <img :src="getSocials.tw" alt="Twitter">
+                <div class="sp-user-socials">
+                    <div class="sp-user-socials-item">
+                        <img :src="getSocials.fb" alt="Facebook">
+                    </div>
+                    <div class="sp-user-socials-item">
+                        <img :src="getSocials.vk" alt="Vk">
+                    </div>
+                    <div class="sp-user-socials-item">
+                        <img :src="getSocials.gp" alt="Google plus">
+                    </div>
+                    <div class="sp-user-socials-item">
+                        <img :src="getSocials.tw" alt="Twitter">
+                    </div>
                 </div>
             </div>
             <div class="sp-m-text-center sp-profile-edit-link" v-if="$parent.user.user.register_date">
@@ -840,7 +840,6 @@ export default {
       left: 0;
       text-align: left;
       padding-left: 115px;
-
       @media screen and (min-width: 1050px) {
         padding-left: 135px;
       }
@@ -857,7 +856,7 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-
+    display: -ms-flexbox;
   @media screen and (min-width: 780px) {
     align-content: flex-start;
   }
@@ -956,22 +955,23 @@ export default {
 .sp-user-info {
   padding-left: 15px;
   box-sizing: border-box;
-  flex-basis: calc(100% - 52px);
+  /*flex-basis: calc(100% - 52px);*/
   display: flex;
   flex-direction: column;
   align-items: start;
+    flex-basis: auto !important;
 
   @media screen and (min-width: 400px) and (max-width: 779px) {
     flex-basis: auto;
   }
 
   @media screen and (min-width: 780px) {
-    flex-basis: calc(100% - 70px);
+    /*flex-basis: calc(100% - 70px);*/
     padding-left: 25px;
   }
 
   @media screen and (min-width: 1050px) {
-    flex-basis: calc(100% - 85px);
+    /*flex-basis: calc(100% - 85px);*/
     padding-left: 30px;
   }
 
@@ -1013,27 +1013,19 @@ export default {
   }
 }
 
+
 .sp-user-socials {
   box-sizing: border-box;
   margin: 15px 0;
-  flex-basis: 100%;
-  display: flex;
-  justify-content: center;
+  justify-content: start;
+    padding-left: 0;
 
-  @media screen and (min-width: 780px) {
-    padding-left: 95px;
-    justify-content: start;
-  }
-
-  @media screen and (min-width: 1050px) {
-    padding-left: 115px;
-  }
 
   .sp-user-socials-item {
     width: 36px;
     height: 36px;
     margin-right: 10px;
-
+    float:left;
     &:last-child {
       margin-right: 0;
     }
@@ -1053,7 +1045,6 @@ export default {
 
 .sp-profile-edit-link {
   width: 100%;
-
   @media screen and (min-width: 780px) {
     position: absolute;
     bottom: -23px;

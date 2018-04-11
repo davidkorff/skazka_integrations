@@ -208,6 +208,115 @@
             height 100%
 
 </style>
+<style lang="css">
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        .sp-popup-profile-form {
+            width: 100%;
+        }
+        .sp-wishlist-container {
+            text-align: center;
+        }
+        #sp-loyalty-wishlist {
+            width: 100%;
+        }
+        .sp-wishlist-empty {
+            display: inline-block;
+        }
+        .sp-game-container {
+            position: relative;
+        }
+        .sp-game-container .sp-game-info + img {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translate3d(-50%,0,0);
+        }
+        .sp-user-email {
+            display: inline-block;
+            width: 100%;
+        }
+        #sp-loyalty-badges {
+            height: 257px;
+        }
+        .sp-container__profile {
+            height: 260px;
+        }
+        #sp-loyalty-badges .sp-link {
+            /*bottom: -13px;*/
+        }
+        #sp-loyalty-recommended {
+            height:385px;
+        }
+        .sp-recommended-list-item {
+            text-align: center;
+            padding-top:170px;
+            position: relative;
+        }
+        .sp-recommended-list-item > img {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translate3d(-50%,0,0);
+        }
+        .sp-recommended-list .sp-recommended-list-item .sp-recommended-list-item-price span {
+            display: inline-block;
+        }
+        .sp-game-price span {
+            display: inline-block;
+        }
+        .sp-container__wishlist {
+            height: 367px;
+        }
+        .sp-quests-item-info {
+            float: left;
+        }
+        .sp-quests-item-image {
+            float: right;
+        }
+
+
+        .sp-game-container .sp-game-info {
+            margin-top:180px !important;
+        }
+        .sp-popup-gift-success .sp-container {
+            text-align: center;
+        }
+        .sp-popup {
+            text-align: center;
+        }
+        #sp-loyalty .sp-popup-content {
+            text-align: left;
+            float: none !important;
+            display: inline-block;
+        }
+        #sp-loyalty .sp-popup-content .sp-container {
+            display: inline-block!important;
+        }
+        .sp-gift-item {
+            height:450px;
+        }
+        .sp-game-container {
+            text-align: center;
+            width: 100%;
+            display: inline-block;
+        }
+        .sp-status-item {
+            text-align: center;
+        }
+        .sp-form-checkbox {
+            float: left;
+            display: inline-block;
+        }
+        .sp-game-container img, .sp-recommended-list-item img {
+            border: 0;
+        }
+        .sp-recommended-list-item {
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+        }
+    }
+</style>
 
 /* local styles */
 <style scoped lang="stylus">
@@ -243,6 +352,7 @@
             left 0
             right 0
             margin auto
+            white-space nowrap
             @media screen and (min-width: 780px)
                 top -23px
             a
@@ -293,6 +403,7 @@
             padding-right 17px
             position relative
             display inline-block
+            white-space nowrap
             &:hover
                 text-decoration none
             @media screen and (min-width: 780px)
@@ -400,6 +511,7 @@
         position relative
         @media screen and (min-width: 780px)
             display flex
+            display -ms-flexbox
             align-items stretch
             justify-content space-evenly
         @media screen and (min-width: 1050px)
@@ -420,8 +532,11 @@
                 top -17px
                 left 20px
                 border-radius 15px
+        &__badges
+            float right
+            margin-bottom 20px
         &__badges, &__quests, &__wishlist, &__recommended, &__game, &__gifts, &__status
-            margin-top 35px
+            margin-top 15px
             @media screen and (min-width: 780px)
                 margin-top 50px
         &__gifts, &__status
@@ -430,18 +545,24 @@
             border-radius 0
         &__profile
             justify-content space-between
+            float left
+            margin-bottom 20px
             @media screen and (min-width: 1050px)
                 width 65%
         &__quests
+            float left
             @media screen and (min-width: 1050px)
                 width 65%
         &__recommended
+            float left
             @media screen and (min-width: 1050px)
                 width 65%
         &__wishlist
+            float right
             @media screen and (min-width: 1050px)
                 width 33%
         &__game
+            float right
             @media screen and (min-width: 1050px)
                 width 33%
         &__badges
@@ -502,6 +623,8 @@
                 font-weight 900
                 margin-bottom 15px
                 text-transform uppercase
+                float left
+                width 100%
                 @media screen and (min-width: 780px)
                     font-size 18px
                     line-height 21px
