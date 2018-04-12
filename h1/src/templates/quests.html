@@ -2,22 +2,29 @@
     <div class="quests__title" data-bind="text: texts() && texts().quests.title">More way to earn</div>
     <div class="quests__text" data-bind="html: texts() && texts().quests.motivation">Earn <strong>Bonus Points</strong> when you complete these actions below</div>
     <div class="quests__list" data-bind="foreach: quests">
-        <!-- ko if: type != 'static_page' -->
-        <div class="quests__item">
+        <!-- ko if: type != 'static_page' && type != 'collect_tags'-->
+        <div class="quests__item" data-bind="attr: { 'data-data': $data, 'data-id': $index }">
             <div class="quests__item-img" data-bind="style: { backgroundImage: 'url(\''+ $parent.getIcon($data) + '\')' }"></div>
             <div class="quests__item-title"><strong data-bind="text: $parent.getTitle($data)"></strong></div>
             <div class="quests__item-text" data-bind="text: $parent.getDesc($data)">Text</div>
             <div class="quests__item-points"><strong data-bind="text: points"></strong> <strong data-bind="text: $parent.texts() && $parent.texts().quests.points">points</strong></div>
-            <a href="javascipr:void(0)" data-bind="click: $parent.perform.bind($data), text: $parent.texts() && $parent.texts().quests.view_button" class="btn">View Quest</a>
+            <!-- ko if: $parent.iframeUrls()[$index()]() == "" -->
+            <a href="javascipt:void(0)" target="_blank" data-bind="text: $parent.texts() && $parent.texts().quests.view_button" class="btn social-btn">View Quest</a>
+            <!-- /ko -->
+            <!-- ko if: $parent.iframeUrls()[$index()]() != "" -->
+            <iframe width=150 height=30 scrolling=no data-bind="attr: {src: $parent.iframeUrls()[$index()]()}"></iframe>
+            <!-- /ko -->
+            <!-- /ko -->
+          <!-- /ko -->
         </div>
         <!-- /ko -->
-        <!-- ko if: type == 'static_page' -->
+        <!-- ko if: type == 'static_page' || type == 'collect_tags'-->
         <div class="quests__item">
             <div class="quests__item-img" data-bind="style: { backgroundImage: 'url(\''+ $data.icon + '\')' }"></div>
             <div class="quests__item-title"><strong data-bind="text: name"></strong></div>
             <div class="quests__item-text" data-bind="text: description">Text</div>
             <div class="quests__item-points"><strong data-bind="text: points"></strong> <strong data-bind="text: $parent.texts() && $parent.texts().quests.points">points</strong></div>
-            <a href="javascipr:void(0)" class="btn" data-bind="text: button_text, attr: { href: content.url }"></a>
+            <a href="javascipt:void(0)" target="_blank" class="btn" data-bind="click: $parent.trustpilot.bind(content.url), text: button_text, attr: { href: content.url }"></a>
         </div>
         <!-- /ko  -->
     </div>

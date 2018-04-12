@@ -84,20 +84,20 @@ class Login extends Dialog {
             if (data.name == 'login.check' && data.auth_hash && data.auth_hash != 'None') {
                 sp.tagsExist([sp.config().partner.loyalty_page_config.doi_tag], data.auth_hash)
                     .then(result => {
-                        
+
                         sp.tagsAdd({
-                            tags: [sp.config().partner.loyalty_page_config.after_register_tag, sp.config().partner.loyalty_page_config.registered_tag]
+                            tags: [sp.config().partner.loyalty_page_config.after_register_tag, sp.config().partner.loyalty_page_config.brand_tag, sp.config().partner.loyalty_page_config.registered_tag]
                         }, data.auth_hash)
 
                         if (!result.tags[0].exist) {
-                            
+
                             if (!sp.redirect) {
                                 // это на самом деле не то, смотри строчку 52
                                 sp.show_doi_message(1)
                                 authorize(data.auth_hash);
                             } else {
                                 sp.show_doi_message(1)
-                                cookie.set('sp_auth_hash', data.auth_hash, { path: '/', domain: cookie_domain} );                                
+                                cookie.set('sp_auth_hash', data.auth_hash, { path: '/', domain: cookie_domain} );
                             }
                             return
                         } else {
@@ -165,7 +165,7 @@ window._logout = () => {
     cookie.remove('sp_auth_hash', { path: '/', domain: cookie_domain})
 
     let req = document.createElement('iframe');
-    req.width = 0;    
+    req.width = 0;
     req.height = 0;
     req.style.border = 'none';
     req.src = sp.options.domain + '/users/logout';
@@ -174,8 +174,12 @@ window._logout = () => {
         document.body.removeChild(req);
         sp.auth_hash = '';
         sp.user(false);
-        if (sp.config().partner.loyalty_page_config.logout_url || sp.config().partner.loyalty_page_config.force_logout_redirect) {
+        if (sp.config().partner.loyalty_page_config.logout_url) {
             location.assign(sp.config().partner.loyalty_page_config.logout_url)
+        }
+        else if (sp.config().partner.loyalty_page_config.force_logout_redirect)
+        {
+            location.reload()
         }
     }
 }

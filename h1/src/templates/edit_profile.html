@@ -2,7 +2,7 @@
     <div class="dialog">
         <div class="dialog__header" data-bind="style: { backgroundImage: 'url(\'' + (texts() && texts().brand_white) + '\')' }">
             <a href="#" class="dialog__close" data-bind="
-                visible: !preventClose(), 
+                visible: !preventClose(),
                 click: close.bind($data, true)
             "></a>
             <span data-bind="text: texts().profile.popup.title"></span></div>
@@ -11,79 +11,76 @@
                 <div class="form-group">
                     <label for="email" data-bind="text: texts().profile.popup.form_labels.email"></label>
                     <input id="email" data-bind="
-                        value: user.email, 
-                        css: { '__sailplay-error': !user.email.isValid() }, 
+                        value: user.email,
+                        css: { '__sailplay-error': !user.email.isValid() },
                         attr: { placeholder: texts().profile.popup.form_labels.email_placeholder }
                     " type="text">
                 </div>
                 <div class="form-group">
                     <label for="first_name" data-bind="text: texts().profile.popup.form_labels.name">Name*</label>
                     <input id="first_name" data-bind="
-                        value: user.first_name, 
+                        value: user.first_name,
                         css: { '__sailplay-error': !user.first_name.isValid() },
-                        attr: { placeholder: texts().profile.popup.form_labels.name_first_placeholder }                        
+                        attr: { placeholder: texts().profile.popup.form_labels.name_first_placeholder }
                     " class="span_1-2" type="text" placeholder="First Name">
                     <input id="last_name" data-bind="
-                        value: user.last_name, 
+                        value: user.last_name,
                         css: { '__sailplay-error': !user.last_name.isValid() },
-                        attr: { placeholder: texts().profile.popup.form_labels.name_last_placeholder }                        
+                        attr: { placeholder: texts().profile.popup.form_labels.name_last_placeholder }
                     " class="span_1-2" type="text" placeholder="Last Name">
                 </div>
                 <div class="form-group">
                     <label class="span_2-5">
                         <span data-bind="text: texts().profile.popup.form_labels.date_of_birth">Date of birth</span>
                         <input class="date-input" type="text" data-bind="
-                            masked: user.birth_date, 
-                            mask: '99 / 99 / 9999', 
+                            masked: user.birth_date,
+                            mask: '99 / 99 / 9999',
                             mask_options: { placeholder: 'MM / DD / YYYY' },
                             css: { '__sailplay-error': !user.birth_date.isValid() }" placeholder="MM / DD / YYYY">
                     </label>
                     <label class="span_3-5">
                         <span data-bind="text: texts().profile.popup.form_labels.mobile_phone">Mobile Phone Number</span>
-                        <input type="text" data-bind="
-                            masked: user.phone, 
-                            mask: '9 (999) 9999 999', 
-                            mask_options: { placeholder: 'X (XXX) XXXX XXX' }" placeholder="X (XXX) XXXX XXX">
+                        <input type="text" placeholder="X (XXX) XXXX XXX">
                     </label>
                 </div>
                 <div class="form-group half-margin">
                     <label for="address_1" data-bind="text: texts().profile.popup.form_labels.address">Address</label>
                     <input id="address_1" data-bind="
                         value: address_line_1,
-                        attr: { placeholder: texts().profile.popup.form_labels.address_placeholder_1 }                                                
+                        attr: { placeholder: texts().profile.popup.form_labels.address_placeholder_1 }
                     " type="text" placeholder="Address line 1">
                 </div>
                 <div class="form-group half-margin">
                     <input type="text" data-bind="
                         value: address_line_2,
-                        attr: { placeholder: texts().profile.popup.form_labels.address_placeholder_2 }                                                
+                        attr: { placeholder: texts().profile.popup.form_labels.address_placeholder_2 }
                     " placeholder="Address line 2">
                 </div>
                 <div class="form-group half-margin">
                     <input type="text" data-bind="
                         value: state,
-                        attr: { placeholder: texts().profile.popup.form_labels.state_placeholder }                                                                        
+                        attr: { placeholder: texts().profile.popup.form_labels.state_placeholder }
                     " class="span_2-5" placeholder="State/Province">
                     <input type="text" data-bind="
-                        value: city, 
+                        value: city,
                         css: { '__sailplay-error': city.isValid && !city.isValid() },
-                        attr: { placeholder: texts().profile.popup.form_labels.city_placeholder }                                                                        
+                        attr: { placeholder: texts().profile.popup.form_labels.city_placeholder }
                     " class="span_3-5" placeholder="City*">
                 </div>
                 <div class="form-group">
                     <input type="text" data-bind="
-                        value: post_code, 
+                        value: post_code,
                         css: { '__sailplay-error': post_code.isValid && !post_code.isValid() },
-                        attr: { placeholder: texts().profile.popup.form_labels.postcode_placeholder }                                                                        
+                        attr: { placeholder: texts().profile.popup.form_labels.postcode_placeholder }
                     " class="span_2-5" placeholder="Postcode*">
                     <input type="text" data-bind="
-                        value: country, 
+                        value: country,
                         css: { '__sailplay-error': country.isValid && !country.isValid() },
-                        attr: { placeholder: texts().profile.popup.form_labels.country_placeholder }                                                                        
+                        attr: { placeholder: texts().profile.popup.form_labels.country_placeholder }
                     " class="span_3-5" placeholder="Country*">
                 </div>
                 <div class="form-group half-margin">
-                    <label data-bind="text: texts().profile.popup.form_labels.currency">Preferred Currency</label>                    
+                    <label data-bind="text: texts().profile.popup.form_labels.currency">Preferred Currency</label>
                     <label class="select-box">
                         <div data-bind="text: getCurrencyName()"></div>
                         <select name="" id="" data-bind="
@@ -91,11 +88,11 @@
                             optionsText: 'name',
                             optionsValue: 'id',
                             value: user_currency">
-                        </select>	
+                        </select>
                     </label>
                 </div>
                 <button type="submit" class="btn" data-bind="
-                    click: update, 
+                    click: update,
                     css: { '__sailplay-disabled': errors().length },
                     text: texts().profile.popup.form_labels.update_button
                 ">Update profile</button>&nbsp;
