@@ -315,6 +315,13 @@
             display: inline-block;
             text-align: center;
         }
+        .sp-container__profile, .sp-container__quests, .sp-container__recommended {
+            float: left;
+        }
+        .sp-container__badges, .sp-container__wishlist, .sp-container__game {
+            float: right;
+
+        }
     }
 </style>
 
@@ -533,7 +540,7 @@
                 left 20px
                 border-radius 15px
         &__badges
-            float right
+            /*float right*/
             margin-bottom 20px
         &__badges, &__quests, &__wishlist, &__recommended, &__game, &__gifts, &__status
             margin-top 15px
@@ -545,24 +552,24 @@
             border-radius 0
         &__profile
             justify-content space-between
-            float left
+            /*float left*/
             margin-bottom 20px
             @media screen and (min-width: 1050px)
                 width 65%
         &__quests
-            float left
+            /*float left*/
             @media screen and (min-width: 1050px)
                 width 65%
         &__recommended
-            float left
+            /*float left*/
             @media screen and (min-width: 1050px)
                 width 65%
         &__wishlist
-            float right
+            /*float right*/
             @media screen and (min-width: 1050px)
                 width 33%
         &__game
-            float right
+            /*float right*/
             @media screen and (min-width: 1050px)
                 width 33%
         &__badges
