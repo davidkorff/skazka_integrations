@@ -605,6 +605,8 @@
             z-index 1
 
         .sp-container
+            overflow hidden
+
             @media screen and (min-width: 780px)
                 border none
                 padding 38px

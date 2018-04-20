@@ -196,7 +196,7 @@
             font-weight bold
 
     .sp-badges-empty
-        padding 10px 47px
+        padding 10px 0
         box-sizing border-box
         font-size 10px
         line-height 15px
@@ -206,6 +206,8 @@
         display flex
         align-items center
         justify-content center
+        @media screen and (min-width: 400px)
+            padding 10px 47px
         @media screen and (min-width: 780px)
             font-size 14px
         @media screen and (min-width: 1050px)

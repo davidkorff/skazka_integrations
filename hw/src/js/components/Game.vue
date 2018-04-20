@@ -56,7 +56,7 @@
             padding 60px 60px 40px
     .sp-game-container
         display flex
-        justify-content space-evenly
+        justify-content center
         flex-wrap wrap
         text-decoration none
         color black

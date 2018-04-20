@@ -7,6 +7,8 @@ module.exports = {
     'sailplay.magic.min': './src/js/main.js',
   },
 
+  mode: 'production',
+
   // for production
   devtool: 'source-map',
 
@@ -37,9 +39,10 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          loaders: {
-            stylus: 'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!stylus-loader?sourceMap=true'
-          }
+          // loaders: {
+          //   stylus: 'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!postcss?sourceMap=true!stylus-loader?sourceMap=true',
+          // },
+          postcss: [require('postcss-cssnext')()]
         }
       },
 
@@ -60,28 +63,6 @@ module.exports = {
   },
 
   plugins: [
-
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/), // Ignore all optional deps of moment.js
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: true,
-      compress: {
-        warnings: false, // Suppress uglification warnings
-        pure_getters: true,
-        unsafe: true,
-        unsafe_comps: true,
-        screw_ie8: true
-      },
-      output: {
-        comments: false,
-      },
-      exclude: [/\.min\.js$/gi] // skip pre-minified libs
-    })
-
   ]
 
 }

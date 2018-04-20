@@ -910,6 +910,7 @@ export default {
     padding: 4px 8px;
     display: inline-block;
     text-decoration: none;
+    background white
 
     @media screen and (min-width: 780px) {
       font-size: 15px;
@@ -996,6 +997,8 @@ export default {
     color: rgba(0, 0, 0, 0.2);
     text-decoration: none;
     margin-top: 8px;
+    width: 100%;
+
 
     @media screen and (min-width: 780px) {
       font-size: 15px;
