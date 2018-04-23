@@ -61,10 +61,13 @@
         text-decoration none
         color black
         width 100%
-        @media screen and (min-width: 780px)
+        flex-direction column-reverse
+        align-items center
+        @media screen and (min-width: 380px)
             flex-direction row-reverse
-            width 60%
             justify-content center
+        @media screen and (min-width: 780px)
+            width 60%
         @media screen and (min-width: 1050px)
             flex-direction column-reverse
             width 100%
@@ -82,8 +85,9 @@
                 margin auto
         .sp-game-info
             width auto
-            margin-top 20px
             box-sizing border-box
+            @media screen and (min-width: 380px)
+                margin-top 20px
             @media screen and (min-width: 780px)
                 max-width 190px
             @media screen and (min-width: 1050px)
